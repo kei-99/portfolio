@@ -1,225 +1,499 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Theint Yadanar Lwin</title>
-    <meta name="description" content="Professional web developer specializing in modern web technologies. View my portfolio and get in touch for your next project.">
+    <title>テインヤダナーリイン　| フルスタック開発者ポートフォリオ</title>
+    <meta name="description" content="日本での就職を目指すフルスタック開発者のポートフォリオ。Laravel、Vue.js、AWS等の技術経験3年以上。">
+    <meta name="keywords" content="フルスタック開発者,Laravel,Vue.js,AWS,ミャンマー,日本就職,リモートワーク">
     
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
+    <!-- EmailJS ライブラリの読み込み -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts - Japanese -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/main.css">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'noto': ['Noto Sans JP', 'sans-serif'],
+                        'orbitron': ['Orbitron', 'monospace']
+                    },
+                    colors: {
+                        'space-dark': '#0a0a0a',
+                        'space-blue': '#1a1a2e',
+                        'cosmic-purple': '#16213e',
+                        'star-glow': '#e94560',
+                        'planet-blue': '#0f3460'
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
+<body class="font-noto bg-space-dark text-white overflow-x-hidden">
+    <!-- Background Elements -->
+    <div class="fixed inset-0 z-0">
+        <div class="space-bg"></div>
+        <div class="stars-layer"></div>
+        <div class="floating-planets"></div>
+    </div>
+
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand fw-bold text-primary" href="#home">
-                <i class="fas fa-code me-2"></i>TheintYadanarLwin.dev
-            </a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#portfolio">Portfolio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#services">Services</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
-                </ul>
+    <nav class="fixed top-0 w-full z-50 bg-black bg-opacity-30 backdrop-blur-sm border-b border-white border-opacity-10">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-xl font-orbitron font-bold text-star-glow">
+                    THEINT PORTFOLIO
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link hover:text-star-glow transition-colors duration-300">ホーム</a>
+                    <a href="#about" class="nav-link hover:text-star-glow transition-colors duration-300">プロフィール</a>
+                    <a href="#experience" class="nav-link hover:text-star-glow transition-colors duration-300">経歴</a>
+                    <a href="#skills" class="nav-link hover:text-star-glow transition-colors duration-300">スキル</a>
+                    <a href="#projects" class="nav-link hover:text-star-glow transition-colors duration-300">プロジェクト</a>
+                    <a href="#contact" class="nav-link hover:text-star-glow transition-colors duration-300">連絡先</a>
+                </div>
+                <button class="md:hidden text-white" id="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </div>
     </nav>
 
+    <!-- Mobile Menu -->
+    <div class="fixed inset-0 z-40 bg-black bg-opacity-95 backdrop-blur-sm hidden" id="mobile-menu">
+        <div class="flex flex-col items-center justify-center h-full space-y-8 text-xl">
+            <a href="#home" class="mobile-nav-link">ホーム</a>
+            <a href="#about" class="mobile-nav-link">プロフィール</a>
+            <a href="#experience" class="mobile-nav-link">経歴</a>
+            <a href="#skills" class="mobile-nav-link">スキル</a>
+            <a href="#projects" class="mobile-nav-link">プロジェクト</a>
+            <a href="#contact" class="mobile-nav-link">連絡先</a>
+        </div>
+    </div>
+
     <!-- Hero Section -->
-    <section id="home" class="hero-section d-flex align-items-center min-vh-100 bg-gradient-to-br from-slate-900 to-blue-900">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="hero-content text-white animate-fade-in">
-                        <h1 class="display-4 fw-bold mb-4">
-                            初めまして<span class="text-primary">Keiです。</span>
-                        </h1>
-                        <h2 class="h3 mb-4 text-light opacity-90">Full Stack Web Developer</h2>
-                        <p class="lead mb-5 text-light opacity-80">
-                            I create modern, responsive websites and web applications using cutting-edge technologies. 
-                            Let's bring your digital vision to life.
-                        </p>
-                        <div class="hero-buttons">
-                            <a href="#portfolio" class="btn btn-primary btn-lg me-3 px-4 py-3">View My Work</a>
-                            <a href="#contact" class="btn btn-outline-light btn-lg px-4 py-3">Get In Touch</a>
-                        </div>
-                        <div class="social-links mt-5">
-                            <a href="https://github.com/kei-99" class="text-white me-4 fs-4 hover-primary">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="#" class="text-white me-4 fs-4 hover-primary">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="#" class="text-white me-4 fs-4 hover-primary">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="text-white fs-4 hover-primary">
-                                <i class="fas fa-envelope"></i>
-                            </a>
+    <section id="home" class="relative min-h-screen flex items-center justify-center">
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <div class="hero-content">
+                <div class="profile-image-container mb-8">
+                    <div class="w-48 h-48 mx-auto rounded-full bg-gradient-to-r from-star-glow to-planet-blue p-1 animate-pulse-glow">
+                        <div class="w-full h-full rounded-full bg-gray-800 flex items-center justify-center">
+                            <img id="profile-photo" src="assets/profile-photo.jpg" alt="テインヤダナーリイン" class="w-full h-full rounded-full">
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="hero-image text-center">
-                        <div class="profile-container">
-                            <div class="profile-image-wrapper">
-                                <svg width="400" height="400" viewBox="0 0 400 400" class="profile-svg">
-                                    <defs>
-                                        <linearGradient id="profileGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                            <stop offset="0%" style="stop-color:#3B82F6"/>
-                                            <stop offset="100%" style="stop-color:#1E40AF"/>
-                                        </linearGradient>
-                                    </defs>
-                                    <circle cx="200" cy="200" r="180" fill="url(#profileGradient)" opacity="0.1"/>
-                                    <circle cx="200" cy="200" r="150" fill="none" stroke="url(#profileGradient)" stroke-width="2" opacity="0.3"/>
-                                    <circle cx="200" cy="200" r="120" fill="url(#profileGradient)" opacity="0.8"/>
-                                    <text x="200" y="190" text-anchor="middle" fill="white" font-size="24" font-weight="bold">
-                                        <tspan x="200" dy="0">&lt;/&gt;</tspan>
-                                    </text>
-                                    <text x="200" y="220" text-anchor="middle" fill="white" font-size="14">
-                                        <tspan x="200" dy="0">Developer</tspan>
-                                    </text>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
+                
+                <h1 class="text-5xl md:text-7xl font-orbitron font-bold mb-4 text-glow">
+                    テインヤダナーリイン
+                </h1>
+                <h2 class="text-2xl md:text-3xl mb-6 text-blue-300">
+                    フルスタック開発者
+                </h2>
+                <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-gray-300">
+                    3年以上の開発経験を持ち、Laravel・Vue.jsを中心としたフルスタック開発を専門とします。<br>
+                    日本でのリモートワークを目指し、継続的な技術向上に取り組んでいます。
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="cosmic-btn primary" onclick="scrollToSection('about')">
+                        <i class="fas fa-rocket mr-2"></i>
+                        プロフィールを見る
+                    </button>
+                    <button class="cosmic-btn secondary" onclick="scrollToSection('contact')">
+                        <i class="fas fa-paper-plane mr-2"></i>
+                        お問い合わせ
+                    </button>
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator">
-            <a href="#about" class="text-white">
-                <i class="fas fa-chevron-down animate-bounce"></i>
-            </a>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+            <div class="animate-bounce">
+                <i class="fas fa-chevron-down text-2xl text-star-glow"></i>
+            </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-5 bg-light">
-        <div class="container py-5">
-            <div class="row">
-                <div class="col-lg-12 text-center mb-5">
-                    <h2 class="display-5 fw-bold text-dark mb-3">About Me</h2>
-                    <p class="lead text-muted">Passionate about creating exceptional digital experiences</p>
-                </div>
+    <section id="about" class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-orbitron font-bold mb-4 text-glow">
+                    プロフィール
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-star-glow to-planet-blue mx-auto"></div>
             </div>
             
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4">
-                    <div class="about-content">
-                        <h3 class="h4 fw-bold mb-4 text-dark">Hello! I'm a Full Stack Developer</h3>
-                        <p class="text-muted mb-4">
-                            With over 2 years of experience in web development, I specialize in creating 
-                            modern, scalable web applications using agile development. I'm passionate about clean code, user experience, 
-                            and staying up-to-date with the latest technologies.
-                        </p>
-                        <p class="text-muted mb-4">
-                            I enjoy solving complex problems and turning ideas into beautiful, functional websites. 
-                            My goal is to help businesses establish a strong online presence through innovative 
-                            web solutions.
-                        </p>
-                        <div class="stats-row row text-center">
-                            <div class="col-6">
-                                <div class="stat-item">
-                                    <h4 class="fw-bold text-primary mb-0">5+</h4>
-                                    <small class="text-muted">Projects</small>
-                                </div>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-card">
+                    <h3 class="text-2xl font-bold mb-6 text-star-glow">基本情報</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-user text-star-glow mr-3"></i>
+                            <span><strong>名前:</strong> テインヤダナーリイン</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-birthday-cake text-star-glow mr-3"></i>
+                            <span><strong>年齢:</strong> 25歳</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-star-glow mr-3"></i>
+                            <span><strong>居住地:</strong> ヤンゴン、ミャンマー</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-certificate text-star-glow mr-3"></i>
+                            <span><strong>資格:</strong> JLPTN3合格（2024年7月）</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-briefcase text-star-glow mr-3"></i>
+                            <span><strong>経験年数:</strong> 3年以上</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-card">
+                    <h3 class="text-2xl font-bold mb-6 text-star-glow">自己紹介</h3>
+                    <p class="text-gray-300 leading-relaxed mb-4">
+                        2016年にヤンゴン・コンピュータ・スタディーズ大学のコンピュータ技術専攻に入学。コロナ禍で大学が休校となった期間中、アニメの影響で日本語を独学し、2022年にJLPT N4に合格いたしました。　そして 2024年にJLPT N3にも合格いたしました。
+                    </p>
+                    <p class="text-gray-300 leading-relaxed mb-4">2024年4月に基本情報技術者試験に取得しました。</p>
+                    <p class="text-gray-300 leading-relaxed mb-4">
+                        2022年5月にMetateam Myanmar（ミャンマー拠点の日本向けオフショア開発企業）でOJTを開始し、同年9月にジュニア開発者として正式採用。2024年4月にシニア開発者に昇進いたしました。
+                    </p>
+                    <p class="text-gray-300 leading-relaxed">
+                        現在は日本でのリモートワークを目標とし、Java Spring Bootの学習など、継続的な技術向上に取り組んでおります。チームコミュニケーションを重視し、責任感を持って業務に取り組む姿勢が評価されています。
+                    </p>
+                </div>
+            </div>
+            <div class="max-w-4xl mx-auto mt-4">
+                <div class="space-card">
+                    <img id="profile-photo" src="assets/metateam.jpg" alt="metateam" class="w-full h-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-orbitron font-bold mb-4 text-glow">
+                    職歴・経験
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-star-glow to-planet-blue mx-auto"></div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="timeline">
+                    <!-- Timeline Item 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content space-card">
+                            <div class="timeline-date">2022年5月 - 9月</div>
+                            <h3 class="text-xl font-bold text-star-glow mb-2">OJT研修生</h3>
+                            <h4 class="text-lg text-blue-300 mb-3">Metateam Myanmar</h4>
+                            <p class="text-gray-300">
+                                ミャンマー拠点の日本向けオフショア開発企業でOJT研修を開始。基礎的な開発スキルとビジネスマナーを習得。
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline Item 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content space-card">
+                            <div class="timeline-date">2022年9月 - 2024年4月</div>
+                            <h3 class="text-xl font-bold text-star-glow mb-2">ジュニア開発者</h3>
+                            <h4 class="text-lg text-blue-300 mb-3">Metateam Myanmar</h4>
+                            <div class="mb-4">
+                                <h5 class="font-semibold text-white mb-2">キッチン商品販売システム（3ヶ月）</h5>
+                                <ul class="text-gray-300 text-sm space-y-1 list-disc list-inside ml-4">
+                                    <li>Laravel・Vue.jsを使用したアジャイル開発</li>
+                                    <li>UTケースの作成・テスト実行</li>
+                                    <li>デザインチケット・小規模チケットの対応</li>
+                                </ul>
                             </div>
-                            <div class="col-6">
-                                <div class="stat-item">
-                                    <h4 class="fw-bold text-primary mb-0">2+</h4>
-                                    <small class="text-muted">Years</small>
-                                </div>
+                            <div>
+                                <h5 class="font-semibold text-white mb-2">建設業向け商品販売システム（メイン開発者・継続）</h5>
+                                <ul class="text-gray-300 text-sm space-y-1 list-disc list-inside ml-4">
+                                    <li>4つのシステム（保守3つ・新規1つ）の開発</li>
+                                    <li>開発からデプロイまで幅広い業務を担当</li>
+                                    <li>日本語でのUTテストケース作成（約10件）</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline Item 3 -->
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content space-card">
+                            <div class="timeline-date">2024年4月 - 2025年5月</div>
+                            <h3 class="text-xl font-bold text-star-glow mb-2">シニア開発者</h3>
+                            <h4 class="text-lg text-blue-300 mb-3">Metateam Myanmar</h4>
+                            <div class="mb-4">
+                                <h5 class="font-semibold text-white mb-2">高度な技術実装・システム最適化</h5>
+                                <ul class="text-gray-300 text-sm space-y-1 list-disc list-inside ml-4">
+                                    <li>CircleCI ワークフローの構築・Docker キャッシュ最適化</li>
+                                    <li>AWS サービス（SNS・SES）の調査・実装</li>
+                                    <li>Google Tag Manager を使用したアナリティクス実装</li>
+                                    <li>MySQL バージョンアップ（5.6 → 8.0）</li>
+                                    <li>4システム横断でのS3データクレンジング機能実装</li>
+                                </ul>
+                            </div>
+                            <p class="text-gray-300 text-sm">
+                                <strong>評価:</strong> 積極性・報連相の良さ・責任感・チームコミュニケーション能力が高く評価される
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline Item 4 -->
+                    <div class="timeline-item">
+                        <div class="timeline-marker current"></div>
+                        <div class="timeline-content space-card">
+                            <div class="timeline-date">2025年5月 - 現在</div>
+                            <h3 class="text-xl font-bold text-star-glow mb-2">転職活動・スキルアップ</h3>
+                            <h4 class="text-lg text-blue-300 mb-3">フリーランス・学習期間</h4>
+                            <p class="text-gray-300 mb-2">
+                                日本でのリモートワーク・永住権取得を目標とした転職活動を開始。
+                            </p>
+                            <p class="text-gray-300">
+                                現在Java Spring Bootを学習中。新しい技術への探求心を持ち続け、スキル向上に努めています。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-orbitron font-bold mb-4 text-glow">
+                    技術スキル
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-star-glow to-planet-blue mx-auto"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Backend Skills -->
+                <div class="space-card">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-server text-4xl text-star-glow mb-3"></i>
+                        <h3 class="text-xl font-bold">バックエンド</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-1">
+                                <span>Laravel</span>
+                                <span class="text-star-glow">上級</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-1">
+                                <span>PHP</span>
+                                <span class="text-star-glow">上級</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-1">
+                                <span>Java Spring Boot</span>
+                                <span class="text-blue-300">学習中</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 40%"></div>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="col-lg-6">
-                    <div class="skills-section">
-                        <h4 class="fw-bold mb-4 text-dark">Technical Skills</h4>
-                        
-                        <div class="skill-item mb-4">
-                            <div class="d-flex justify-content-between mb-2">
-                                <span class="fw-medium">Frontend Development</span>
-                                <span class="text-primary">95%</span>
+                <!-- Frontend Skills -->
+                <div class="space-card">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-code text-4xl text-star-glow mb-3"></i>
+                        <h3 class="text-xl font-bold">フロントエンド</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-1">
+                                <span>Vue.js</span>
+                                <span class="text-star-glow">上級</span>
                             </div>
-                            <div class="progress skill-progress">
-                                <div class="progress-bar bg-primary" style="width: 95%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item mb-4">
-                            <div class="d-flex justify-content-between mb-2">
-                                <span class="fw-medium">Backend Development</span>
-                                <span class="text-primary">90%</span>
-                            </div>
-                            <div class="progress skill-progress">
-                                <div class="progress-bar bg-primary" style="width: 90%"></div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
                             </div>
                         </div>
-                        
-                        <div class="skill-item mb-4">
-                            <div class="d-flex justify-content-between mb-2">
-                                <span class="fw-medium">Database Design</span>
-                                <span class="text-primary">85%</span>
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-1">
+                                <span>JavaScript</span>
+                                <span class="text-star-glow">上級</span>
                             </div>
-                            <div class="progress skill-progress">
-                                <div class="progress-bar bg-primary" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item mb-4">
-                            <div class="d-flex justify-content-between mb-2">
-                                <span class="fw-medium">UI/UX Design</span>
-                                <span class="text-primary">80%</span>
-                            </div>
-                            <div class="progress skill-progress">
-                                <div class="progress-bar bg-primary" style="width: 80%"></div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
                             </div>
                         </div>
-                        
-                        <div class="tech-stack mt-4">
-                            <h5 class="fw-bold mb-3 text-dark">Technologies I Use</h5>
-                            <div class="tech-tags">
-                                <span class="badge bg-primary me-2 mb-2 px-3 py-2">PHP</span>
-                                <span class="badge bg-primary me-2 mb-2 px-3 py-2">Laravel</span>
-                                <span class="badge bg-primary me-2 mb-2 px-3 py-2">Java</span>
-                                <span class="badge bg-primary me-2 mb-2 px-3 py-2">Vue.JS</span>
-                                <span class="badge bg-primary me-2 mb-2 px-3 py-2">Javascript</span>
-                                <span class="badge bg-primary me-2 mb-2 px-3 py-2">MYSQL</span>
-                                <span class="badge bg-primary me-2 mb-2 px-3 py-2">AWS</span>
-                                <span class="badge bg-primary me-2 mb-2 px-3 py-2">Docker</span>
-                                <span class="badge bg-primary me-2 mb-2 px-3 py-2">Google analytics Tools</span>
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-1">
+                                <span>HTML/CSS</span>
+                                <span class="text-star-glow">上級</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Database Skills -->
+                <div class="space-card">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-database text-4xl text-star-glow mb-3"></i>
+                        <h3 class="text-xl font-bold">データベース</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-1">
+                                <span>MySQL</span>
+                                <span class="text-star-glow">上級</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-1">
+                                <span>SQL最適化</span>
+                                <span class="text-star-glow">中級</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Cloud & DevOps Skills -->
+                <div class="space-card">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-cloud text-4xl text-star-glow mb-3"></i>
+                        <h3 class="text-xl font-bold">クラウド・DevOps</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-1">
+                                <span>AWS (SNS, SES, S3)</span>
+                                <span class="text-star-glow">中級</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-1">
+                                <span>Docker</span>
+                                <span class="text-star-glow">中級</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-1">
+                                <span>CircleCI</span>
+                                <span class="text-star-glow">中級</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testing & Analytics -->
+                <div class="space-card">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-chart-line text-4xl text-star-glow mb-3"></i>
+                        <h3 class="text-xl font-bold">テスト・分析</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-1">
+                                <span>ユニットテスト</span>
+                                <span class="text-star-glow">上級</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-1">
+                                <span>Google Analytics</span>
+                                <span class="text-star-glow">中級</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Language Skills -->
+                <div class="space-card">
+                    <div class="text-center mb-6">
+                        <i class="fas fa-language text-4xl text-star-glow mb-3"></i>
+                        <h3 class="text-xl font-bold">言語スキル</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-1">
+                                <span>日本語 (JLPT)</span>
+                                <span class="text-star-glow">中級</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-1">
+                                <span>英語</span>
+                                <span class="text-star-glow">上級</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="flex justify-between items-center mb-1">
+                                <span>ミャンマー語</span>
+                                <span class="text-star-glow">ネイティブ</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 100%"></div>
                             </div>
                         </div>
                     </div>
@@ -228,194 +502,80 @@
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="py-5 bg-white">
-        <div class="container py-5">
-            <div class="row">
-                <div class="col-lg-12 text-center mb-5">
-                    <h2 class="display-5 fw-bold text-dark mb-3">My Portfolio</h2>
-                    <p class="lead text-muted">A showcase of my recent projects and achievements</p>
-                </div>
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-orbitron font-bold mb-4 text-glow">
+                    主要プロジェクト
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-star-glow to-planet-blue mx-auto"></div>
             </div>
             
-            <div class="row g-4">
-                <div class="col-lg-4 col-md-6">
-                    <div class="portfolio-card card h-100 border-0 shadow-sm">
-                        <div class="portfolio-image-wrapper">
-                            <svg width="100%" height="250" viewBox="0 0 400 250" class="portfolio-image">
-                                <defs>
-                                    <linearGradient id="portfolioGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" style="stop-color:#3B82F6"/>
-                                        <stop offset="100%" style="stop-color:#1E40AF"/>
-                                    </linearGradient>
-                                </defs>
-                                <rect width="400" height="250" fill="url(#portfolioGrad1)"/>
-                                <rect x="50" y="50" width="300" height="150" fill="white" opacity="0.1" rx="10"/>
-                                <circle cx="200" cy="125" r="30" fill="white" opacity="0.3"/>
-                                <text x="200" y="135" text-anchor="middle" fill="white" font-size="20" font-weight="bold">E-Commerce</text>
-                            </svg>
-                        </div>
-                        <div class="card-body p-4">
-                            <h5 class="card-title fw-bold mb-3">E-Commerce Platform</h5>
-                            <p class="card-text text-muted mb-4">
-                                A full-featured e-commerce platform built with React and Node.js, featuring 
-                                user authentication, payment integration, and admin dashboard.
-                            </p>
-                            <div class="project-tech mb-3">
-                                <span class="badge bg-light text-dark me-2">React</span>
-                                <span class="badge bg-light text-dark me-2">Node.js</span>
-                                <span class="badge bg-light text-dark">MongoDB</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="btn btn-outline-primary btn-sm me-2">
-                                    <i class="fab fa-github me-1"></i>Code
-                                </a>
-                                <a href="#" class="btn btn-primary btn-sm">
-                                    <i class="fas fa-external-link-alt me-1"></i>Live Demo
-                                </a>
-                            </div>
-                        </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="space-card project-card">
+                    <div class="project-header">
+                        <i class="fas fa-utensils text-3xl text-star-glow mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">キッチン商品販売システム</h3>
+                        <p class="text-blue-300 mb-4">Laravel + Vue.js | アジャイル開発</p>
                     </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6">
-                    <div class="portfolio-card card h-100 border-0 shadow-sm">
-                        <div class="portfolio-image-wrapper">
-                            <svg width="100%" height="250" viewBox="0 0 400 250" class="portfolio-image">
-                                <defs>
-                                    <linearGradient id="portfolioGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" style="stop-color:#10B981"/>
-                                        <stop offset="100%" style="stop-color:#047857"/>
-                                    </linearGradient>
-                                </defs>
-                                <rect width="400" height="250" fill="url(#portfolioGrad2)"/>
-                                <rect x="50" y="50" width="300" height="150" fill="white" opacity="0.1" rx="10"/>
-                                <circle cx="200" cy="125" r="30" fill="white" opacity="0.3"/>
-                                <text x="200" y="135" text-anchor="middle" fill="white" font-size="20" font-weight="bold">Task Manager</text>
-                            </svg>
-                        </div>
-                        <div class="card-body p-4">
-                            <h5 class="card-title fw-bold mb-3">Task Management App</h5>
-                            <p class="card-text text-muted mb-4">
-                                A collaborative task management application with real-time updates, 
-                                drag-and-drop functionality, and team collaboration features.
-                            </p>
-                            <div class="project-tech mb-3">
-                                <span class="badge bg-light text-dark me-2">Vue.js</span>
-                                <span class="badge bg-light text-dark me-2">Express</span>
-                                <span class="badge bg-light text-dark">Socket.io</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="btn btn-outline-primary btn-sm me-2">
-                                    <i class="fab fa-github me-1"></i>Code
-                                </a>
-                                <a href="#" class="btn btn-primary btn-sm">
-                                    <i class="fas fa-external-link-alt me-1"></i>Live Demo
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-lg-4 col-md-6">
-                    <div class="portfolio-card card h-100 border-0 shadow-sm">
-                        <div class="portfolio-image-wrapper">
-                            <svg width="100%" height="250" viewBox="0 0 400 250" class="portfolio-image">
-                                <defs>
-                                    <linearGradient id="portfolioGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" style="stop-color:#F59E0B"/>
-                                        <stop offset="100%" style="stop-color:#D97706"/>
-                                    </linearGradient>
-                                </defs>
-                                <rect width="400" height="250" fill="url(#portfolioGrad3)"/>
-                                <rect x="50" y="50" width="300" height="150" fill="white" opacity="0.1" rx="10"/>
-                                <circle cx="200" cy="125" r="30" fill="white" opacity="0.3"/>
-                                <text x="200" y="135" text-anchor="middle" fill="white" font-size="20" font-weight="bold">Analytics</text>
-                            </svg>
-                        </div>
-                        <div class="card-body p-4">
-                            <h5 class="card-title fw-bold mb-3">Analytics Dashboard</h5>
-                            <p class="card-text text-muted mb-4">
-                                A comprehensive analytics dashboard with interactive charts, 
-                                real-time data visualization, and customizable reporting features.
-                            </p>
-                            <div class="project-tech mb-3">
-                                <span class="badge bg-light text-dark me-2">PHP</span>
-                                <span class="badge bg-light text-dark me-2">Laravel</span>
-                                <span class="badge bg-light text-dark me-2">Vue.js</span>
-                                <span class="badge bg-light text-dark me-2">Java</span>
-                                <span class="badge bg-light text-dark">AWS Services</span>
-                                <span class="badge bg-light text-dark">Google analytics Tools</span>
-                                <span class="badge bg-light text-dark">Docker</span>
-
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="btn btn-outline-primary btn-sm me-2">
-                                    <i class="fab fa-github me-1"></i>Code
-                                </a>
-                                <a href="#" class="btn btn-primary btn-sm">
-                                    <i class="fas fa-external-link-alt me-1"></i>Live Demo
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-5">
-                <a href="#" class="btn btn-outline-primary btn-lg px-4 py-3">
-                    View All Projects <i class="fas fa-arrow-right ms-2"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="py-5 bg-light">
-        <div class="container py-5">
-            <div class="row">
-                <div class="col-lg-12 text-center mb-5">
-                    <h2 class="display-5 fw-bold text-dark mb-3">Services</h2>
-                    <p class="lead text-muted">What I can do for you</p>
-                </div>
-            </div>
-            
-            <div class="row g-4">
-                <div class="col-lg-6 col-md-6">
-                    <div class="service-card card h-100 border-0 shadow-sm text-center p-4">
-                        <div class="service-icon mb-4">
-                            <i class="fas fa-code text-primary" style="font-size: 3rem;"></i>
-                        </div>
-                        <h4 class="fw-bold mb-3">Web Development</h4>
-                        <p class="text-muted mb-4">
-                            Custom web applications built with modern technologies, 
-                            optimized for performance and user experience.
+                    <div class="project-content">
+                        <p class="text-gray-300 mb-4">
+                            アジャイル手法を用いたキッチン用品のオンライン販売システム。バックエンドメンバーとして参加し、主にテストケース作成とデザイン実装を担当。
                         </p>
-                        <ul class="list-unstyled text-start">
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Responsive Design</li>
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Performance Optimization</li>
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Cross-browser Support</li>
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>SEO Optimization</li>
-                        </ul>
+                        <div class="project-tech mb-4">
+                            <h4 class="font-semibold mb-2">使用技術:</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tech-tag">Laravel</span>
+                                <span class="tech-tag">Vue.js</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">Agile</span>
+                            </div>
+                        </div>
+                        <div class="project-achievements">
+                            <h4 class="font-semibold mb-2">主な成果:</h4>
+                            <ul class="text-sm text-gray-300 space-y-1">
+                                <li>• UTケースの設計・実装</li>
+                                <li>• デザインチケットの対応</li>
+                                <li>• チーム開発プロセスの習得</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="col-lg-6 col-md-6">
-                    <div class="service-card card h-100 border-0 shadow-sm text-center p-4">
-                        <div class="service-icon mb-4">
-                            <i class="fas fa-server text-primary" style="font-size: 3rem;"></i>
-                        </div>
-                        <h4 class="fw-bold mb-3">Backend Development</h4>
-                        <p class="text-muted mb-4">
-                            Robust server-side solutions with secure APIs, 
-                            database design, and cloud deployment.
+                <!-- Project 2 -->
+                <div class="space-card project-card">
+                    <div class="project-header">
+                        <i class="fas fa-building text-3xl text-star-glow mb-4"></i>
+                        <h3 class="text-xl font-bold mb-2">建設業向け商品販売システム</h3>
+                        <p class="text-blue-300 mb-4">Laravel + Vue.js | マルチシステム開発</p>
+                    </div>
+                    <div class="project-content">
+                        <p class="text-gray-300 mb-4">
+                            4つのシステムから構成される大規模な建設業向けECプラットフォーム。メイン開発者として2年以上携わり、開発からデプロイまで幅広く担当。
                         </p>
-                        <ul class="list-unstyled text-start">
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>RESTful APIs</li>
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Database Design</li>
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Cloud Deployment</li>
-                            <li class="mb-2"><i class="fas fa-check text-primary me-2"></i>Security Implementation</li>
-                        </ul>
+                        <div class="project-tech mb-4">
+                            <h4 class="font-semibold mb-2">使用技術:</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="tech-tag">Laravel</span>
+                                <span class="tech-tag">Vue.js</span>
+                                <span class="tech-tag">AWS</span>
+                                <span class="tech-tag">Docker</span>
+                                <span class="tech-tag">CircleCI</span>
+                                <span class="tech-tag">MySQL</span>
+                            </div>
+                        </div>
+                        <div class="project-achievements">
+                            <h4 class="font-semibold mb-2">主な成果:</h4>
+                            <ul class="text-sm text-gray-300 space-y-1">
+                                <li>• 4システムの保守・新規開発</li>
+                                <li>• AWS SNS/SES統合実装</li>
+                                <li>• Google Tag Manager導入</li>
+                                <li>• MySQL 5.6→8.0アップグレード</li>
+                                <li>• S3データクレンジング機能実装</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -423,112 +583,178 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-5 bg-dark text-white">
-        <div class="container py-5">
-            <div class="row">
-                <div class="col-lg-12 text-center mb-5">
-                    <h2 class="display-5 fw-bold mb-3">Get In Touch</h2>
-                    <p class="lead text-light opacity-80">Ready to start your next project? Let's work together!</p>
-                </div>
+    <section id="contact" class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-orbitron font-bold mb-4 text-glow">
+                    お問い合わせ
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-star-glow to-planet-blue mx-auto mb-8"></div>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                    日本でのリモートワーク・永住権を目指しています。<br>
+                    お気軽にご連絡ください。
+                </p>
             </div>
             
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <div class="row g-4">
-                        <div class="col-md-4 text-center">
-                            <div class="contact-item mb-4">
-                                <div class="contact-icon mb-3">
-                                    <i class="fas fa-envelope text-primary" style="font-size: 2.5rem;"></i>
+            <div class="max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="space-card">
+                        <h3 class="text-2xl font-bold mb-6 text-star-glow">連絡先情報</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-star-glow rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-white"></i>
                                 </div>
-                                <h5 class="fw-bold mb-2">Email</h5>
-                                <p class="text-light opacity-80">eitone6104@gmail.com</p>
+                                <div>
+                                    <h4 class="font-semibold">メール</h4>
+                                    <p class="text-gray-300">eitone6104@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-star-glow rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-map-marker-alt text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">所在地</h4>
+                                    <p class="text-gray-300">ヤンゴン、ミャンマー</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-star-glow rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-briefcase text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">希望勤務形態</h4>
+                                    <p class="text-gray-300">リモートワーク</p>
+                                </div>
                             </div>
                         </div>
                         
-                        <div class="col-md-4 text-center">
-                            <div class="contact-item mb-4">
-                                <div class="contact-icon mb-3">
-                                    <i class="fas fa-phone text-primary" style="font-size: 2.5rem;"></i>
-                                </div>
-                                <h5 class="fw-bold mb-2">Phone</h5>
-                                <p class="text-light opacity-80">+959 796272472</p>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-4 text-center">
-                            <div class="contact-item mb-4">
-                                <div class="contact-icon mb-3">
-                                    <i class="fas fa-map-marker-alt text-primary" style="font-size: 2.5rem;"></i>
-                                </div>
-                                <h5 class="fw-bold mb-2">Location</h5>
-                                <p class="text-light opacity-80">Yangon,Myanmar</p>
+                        <div class="mt-8">
+                            <h4 class="font-semibold mb-4">SNS・リンク</h4>
+                            <div class="flex space-x-4">
+                                <a href="https://github.com/kei-99" class="social-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                                <a href="#" class="social-link">
+                                    <i class="fas fa-globe"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="contact-form mt-5">
-                        <form class="row g-3">
-                            <div class="col-md-6">
-                                <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control bg-dark border-secondary text-white" id="name" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control bg-dark border-secondary text-white" id="email" required>
-                            </div>
-                            <div class="col-12">
-                                <label for="subject" class="form-label">Subject</label>
-                                <input type="text" class="form-control bg-dark border-secondary text-white" id="subject" required>
-                            </div>
-                            <div class="col-12">
-                                <label for="message" class="form-label">Message</label>
-                                <textarea class="form-control bg-dark border-secondary text-white" id="message" rows="5" required></textarea>
-                            </div>
-                            <div class="col-12 text-center">
-                                <button type="submit" class="btn btn-primary btn-lg px-5 py-3">
-                                    Send Message <i class="fas fa-paper-plane ms-2"></i>
-                                </button>
-                            </div>
-                        </form>
+                    <div class="space-card">
+                <h3 class="text-2xl font-bold mb-6">メッセージを送る</h3>
+                <!-- <form id="contact-form" class="space-y-6">
+                    <div>
+                    <label class="block text-sm font-medium mb-2">お名前</label>
+                    <input type="text" name="user_name" class="form-input" placeholder="お名前を入力してください" required>
                     </div>
+                    <div>
+                    <label class="block text-sm font-medium mb-2">メールアドレス</label>
+                    <input type="email" name="user_email" class="form-input" placeholder="メールアドレスを入力してください" required>
+                    </div>
+                    <div>
+                    <label class="block text-sm font-medium mb-2">件名</label>
+                    <input type="text" name="subject" class="form-input" placeholder="件名を入力してください" required>
+                    </div>
+                    <div>
+                    <label class="block text-sm font-medium mb-2">メッセージ</label>
+                    <textarea name="message" rows="5" class="form-input" placeholder="メッセージを入力してください" required></textarea>
+                    </div>
+                    <button type="submit" class="cosmic-btn primary w-full">
+                        <i class="fas fa-paper-plane mr-2"></i>
+                        送信する
+                    </button>
+                    <div id="result" class="success"></div>
+                </form> -->
+                <form id="contact-form" class="space-y-6">
+  <div>
+    <label class="block text-sm font-medium mb-2">お名前</label>
+    <input type="text" name="user_name" class="form-input" placeholder="お名前を入力してください" required>
+  </div>
+
+  <div>
+    <label class="block text-sm font-medium mb-2">メールアドレス</label>
+    <input type="email" name="user_email" class="form-input" placeholder="メールアドレスを入力してください" required>
+  </div>
+
+  <div>
+    <label class="block text-sm font-medium mb-2">件名</label>
+    <input type="text" name="subject" class="form-input" placeholder="件名を入力してください" required>
+  </div>
+
+  <div>
+    <label class="block text-sm font-medium mb-2">メッセージ</label>
+    <textarea name="message" rows="5" class="form-input" placeholder="メッセージを入力してください" required></textarea>
+  </div>
+
+  <button type="submit" class="cosmic-btn primary w-full">
+    <i class="fas fa-paper-plane mr-2"></i>送信する
+  </button>
+  <div id="result" class="success"></div>
+</form>
+                </div>
+
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white py-4 border-top border-secondary">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <p class="mb-0 text-light opacity-80">
-                        © 2025 Theint Yadanar Lwin. All rights reserved.
-                    </p>
-                </div>
-                <div class="col-md-6 text-md-end">
-                    <div class="social-links">
-                        <a href="https://github.com/kei-99" class="text-white me-3 hover-primary">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="#" class="text-white me-3 hover-primary">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="#" class="text-white me-3 hover-primary">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="text-white hover-primary">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                    </div>
-                </div>
+    <footer class="py-8 border-t border-white border-opacity-10">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-4">
+                <p class="text-gray-400">
+                    &copy; 2025 テインヤダナーリイン. All rights reserved.
+                </p>
+            </div>
+            <div class="text-sm text-gray-500">
+                <p>フルスタック開発者 | Laravel・Vue.js専門 | 日本でのリモートワークを目指しています</p>
             </div>
         </div>
     </footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Custom JS -->
-    <script src="script.js"></script>
+    <!-- Scripts -->
+    <script src="scripts/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <!-- EmailJS スクリプト -->
+<script>
+  // 初期化：あなたのPublic Keyに変更
+  emailjs.init("eDwYbqfltqrxAXrG6");
+
+  const form = document.getElementById("contact-form");
+  const resultDiv = document.getElementById("result");
+
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const btn = form.querySelector('button[type="submit"]');
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>送信中...';
+    btn.disabled = true;
+
+    // あなたの Service ID と Template ID に変更
+    emailjs.sendForm("service_t3jexxf", "template_of2el73", this)
+      .then(() => {
+        resultDiv.textContent = "メッセージを送信いたしました。ありがとうございます！";
+        resultDiv.style.color = "green";
+        form.reset();
+      }, (error) => {
+        resultDiv.textContent = "送信に失敗しました。もう一度お試しください。";
+        resultDiv.style.color = "red";
+        console.error("EmailJS Error:", error);
+      })
+      .finally(() => {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+      });
+  });
+</script>
 </body>
 </html>

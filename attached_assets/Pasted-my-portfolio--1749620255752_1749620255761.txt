@@ -1,0 +1,45 @@
+my portfolio 
+
+နာမည်က သိမ့်ရတနာလွင်ပါ
+အသက်က ၂၅ နှစ်ပါ။
+လက်ရှိရန်ကုန်မှာ နေနေပါတယ်။
+အပျိုဖြစ်ပါတယ်။
+
+2016 မှာ တက္ကသိုလ်ဝင်တန်း စာမေးပွဲအောင်ပြီးတော့ Yangon computer Studies, Yangon မှာ uni စတက်ခဲ့ပါတယ်။ 
+major က computer technology ဖြစ်ပါတယ်။ 
+
+uni စတုတ္ထနှစ်မှာ  corona စဖြစ်ပြီး တက္ကသိုလ်ကနေ ရပ်နားခဲ့ရပါတယ်။
+ကျောင်းတွေ နားနေတဲ့ အချိန်မှာ  anime  ကိုကြိုက်တာကြောင့်ဂျပန်စာကို 独学လုပ်ခဲ့ပြီး 2022 7 လပိုင်းမှာ JLPT အောင်မြင်ခဲ့ပါတယ်။
+2022 5 လပိုင်းမှာ myanmar based japan offshore company  Metateam Myanmar မှာ On Job Training စဝင်ခဲ့ပါတယ်။
+2022 9 လပိုင်းမှာ junior developer အဖြစ် အမြဲတန်းဝန်ထမ်းခန့်အပ်ခံရပါတယ်။ 
+
+2024 4လပိုင်းမှာ Senior developer အဖြစ် ရာထူးတိုးခဲ့ပါတယ်။
+
+2025 5 လပိုင်း 23ရက်နေ့မှာ resign လုပ်ခဲ့ပါတယ်
+လုပ်သက်ကတော့ 3နှစ်ရှိပါတယ်။
+
+လုပ်ငန်းအတွေ့အကြုံအရ Agile project management ကိုအသုံးပြုတဲ့  Laravel ,Vue  Js ကိုသုံးတဲ့ kitchen product sale system မှာ BK memeber 3 လလုပ်ခဲ့ရပါတယ်။ 
+ဒီ၃လအတွင်းမှာUT case နဲ့  testing နဲ့ design ticket နဲ့ ticket အသေးလေးတွေကိုပဲ တာဝန်ယူခဲ့ရပါတယ်။
+
+နောက်ထပ် Laravel Vue ကိုသုံးတဲ့ ဆောက်လုပ်ရေးလုပ်ငန်းသုံး product တွေရောင်းတဲ့ system မှာ main member အဖြစ် 2နှစ်ကျော်လုပ်ခဲ့ပါတယ်။
+ဒီ project မှာက system 4 ခုရှိပါတယ်။
+3 ခုက maintainence system ဖြစ်ပြီး 1ခုကတော့ system အသစ်ဖြစ်ပါတယ်။
+ဒီမှာတော့ developement coding အပိုင်းတင်မကပဲ deployment အထိပါ 調査လုပ်ရတာတွေရှိခဲ့ပါတယ်။
+UT testcase လည်း 10 ခုလောက်ဂျပန်လိုရေးခဲ့ဖူးပါတယ်။
+circle ci workflow တွေရေးပေးတာ docker cache  ရှင်းတာမျိုးတွေလည်းလုပ်ခဲ့ပါတယ်၊
+AWS Service ကိုလည်း SNS Service တွေ SES service တွေကို 調査လုပ်ပြီး implement လုပ်ပေးခဲ့ဖူးပါတယ်။
+Google Analytics tool ဖြစ်တဲ့ Google Tag Manger ကိုသုံးပြီးလည်း page viewer , button click တဲ့ user count ကိုသိအောင်ပါ 調査 , impl
+လုပ်ခဲ့ဖူးပါတယ်။
+SQL version ကိုလည်း 5.6 ကနေ 8.0 ကို ချိန်းပေးနိုင်ခဲ့ပါတယ်။
+Task အနေနဲ့ difficult level task တွေအထိပါတာဝန်ယူဖြေရှင်းပေးခဲ့ပါတယ်။ ( ဉပမာ system 4 ခုလုံးကမသုံးတော့တဲ့ data တွေကိူ s3 buckets တွေပေါ်ကနေcleansing လုပ်တဲ့ task မျိုးပါ အောင်မြင်စွာ implement လုပ်နိုင်ခဲ့ပါတယ်။)
+
+အလုပ်မှာတက်ကြွပြီး 報－連ー相 ကောင်းတယ်လို့ အပြောခံရပါတယ်။
+အမြဲတက်ကြွပြီး အလုပ်မှာ responsibity ရှိတဲ့သူဖြစ်ပါတယ်။
+team communication ကောင်းပြီးတခြားသူတွေနဲ့လည်း ကောင်းကောင်းအလုပ်လုပ်နိုင်ပါတယ်။
+မသိသေးတာတွေ research လုပ်ရတာကိုကြိုက်နှစ်သက်ပါတယ်။
+အခုလည်း java spring boot ကိုလေ့လာနေပါတယ်။
+
+target is to find work in japan both remote and permanent
+remote work seeking 
+human thought 
+make these in my portfolio as my story 
