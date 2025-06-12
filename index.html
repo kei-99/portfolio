@@ -726,7 +726,7 @@
     <!-- EmailJS スクリプト -->
 <script>
   // 初期化：あなたのPublic Keyに変更
-  emailjs.init("eDwYbqfltqrxAXrG6");
+  emailjs.init("2WmYrPx0pjOribFYB");
 
   const form = document.getElementById("contact-form");
   const resultDiv = document.getElementById("result");
@@ -740,7 +740,7 @@
     btn.disabled = true;
 
     // あなたの Service ID と Template ID に変更
-    emailjs.sendForm("service_t3jexxf", "template_of2el73", this)
+    emailjs.sendForm("service_t3jexxf", "template_of2el73", form)
       .then(() => {
         resultDiv.textContent = "メッセージを送信いたしました。ありがとうございます！";
         resultDiv.style.color = "green";
