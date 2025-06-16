@@ -21,6 +21,9 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+        <!-- SheetJS for Excel generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles/main.css">
     
@@ -638,68 +641,21 @@
                                 <a href="https://github.com/kei-99" class="social-link">
                                     <i class="fab fa-github"></i>
                                 </a>
-                                <a href="#" class="social-link">
-                                    <i class="fab fa-linkedin"></i>
-                                </a>
-                                <a href="#" class="social-link">
-                                    <i class="fas fa-globe"></i>
-                                </a>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="space-card">
-                <h3 class="text-2xl font-bold mb-6">メッセージを送る</h3>
-                <!-- <form id="contact-form" class="space-y-6">
-                    <div>
-                    <label class="block text-sm font-medium mb-2">お名前</label>
-                    <input type="text" name="user_name" class="form-input" placeholder="お名前を入力してください" required>
-                    </div>
-                    <div>
-                    <label class="block text-sm font-medium mb-2">メールアドレス</label>
-                    <input type="email" name="user_email" class="form-input" placeholder="メールアドレスを入力してください" required>
-                    </div>
-                    <div>
-                    <label class="block text-sm font-medium mb-2">件名</label>
-                    <input type="text" name="subject" class="form-input" placeholder="件名を入力してください" required>
-                    </div>
-                    <div>
-                    <label class="block text-sm font-medium mb-2">メッセージ</label>
-                    <textarea name="message" rows="5" class="form-input" placeholder="メッセージを入力してください" required></textarea>
-                    </div>
-                    <button type="submit" class="cosmic-btn primary w-full">
-                        <i class="fas fa-paper-plane mr-2"></i>
-                        送信する
-                    </button>
-                    <div id="result" class="success"></div>
-                </form> -->
-                <form id="contact-form" class="space-y-6">
-  <div>
-    <label class="block text-sm font-medium mb-2">お名前</label>
-    <input type="text" name="user_name" class="form-input" placeholder="お名前を入力してください" required>
-  </div>
+                    <div class="space-card  justify-center">
+                        <h3 class="text-2xl font-bold mb-6 text-star-glow">履歴書</h3>
+                        <h3 class="mt-5">履歴書フォームのダウンロードはこちら</h3>
+                         <button
+                            id="downloadBtn"
+                            class="bg-blue-600 mt-4 px-4 py-2 rounded hover:bg-blue-700 transition"
+                        >
+                            履歴書をダウンロード
+                        </button>
 
-  <div>
-    <label class="block text-sm font-medium mb-2">メールアドレス</label>
-    <input type="email" name="user_email" class="form-input" placeholder="メールアドレスを入力してください" required>
-  </div>
-
-  <div>
-    <label class="block text-sm font-medium mb-2">件名</label>
-    <input type="text" name="subject" class="form-input" placeholder="件名を入力してください" required>
-  </div>
-
-  <div>
-    <label class="block text-sm font-medium mb-2">メッセージ</label>
-    <textarea name="message" rows="5" class="form-input" placeholder="メッセージを入力してください" required></textarea>
-  </div>
-
-  <button type="submit" class="cosmic-btn primary w-full">
-    <i class="fas fa-paper-plane mr-2"></i>送信する
-  </button>
-  <div id="result" class="success"></div>
-</form>
-                </div>
+                    </div>
 
                 </div>
             </div>
@@ -722,39 +678,15 @@
 
     <!-- Scripts -->
     <script src="scripts/main.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-    <!-- EmailJS スクリプト -->
-<script>
-  // 初期化：あなたのPublic Keyに変更
-  emailjs.init("2WmYrPx0pjOribFYB");
-
-  const form = document.getElementById("contact-form");
-  const resultDiv = document.getElementById("result");
-
-  form.addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    const btn = form.querySelector('button[type="submit"]');
-    const originalText = btn.innerHTML;
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>送信中...';
-    btn.disabled = true;
-
-    // あなたの Service ID と Template ID に変更
-    emailjs.sendForm("service_t3jexxf", "template_of2el73", form)
-      .then(() => {
-        resultDiv.textContent = "メッセージを送信いたしました。ありがとうございます！";
-        resultDiv.style.color = "green";
-        form.reset();
-      }, (error) => {
-        resultDiv.textContent = "送信に失敗しました。もう一度お試しください。";
-        resultDiv.style.color = "red";
-        console.error("EmailJS Error:", error);
-      })
-      .finally(() => {
-        btn.innerHTML = originalText;
-        btn.disabled = false;
-      });
-  });
-</script>
+    <script>
+    document.getElementById("downloadBtn").addEventListener("click", function () {
+        const link = document.createElement("a");
+        link.href = "assets/THEINT YADANAR LWIN.xlsx"; 
+        link.download = "THEINT_YADANAR_LWIN_履歴書.xlsx";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    });
+    </script>
 </body>
 </html>

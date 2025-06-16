@@ -296,92 +296,14 @@ function initContactForm() {
     }
 }
 
-function handleFormSubmission(form) {
-    const submitBtn = form.querySelector('button[type="submit"]');
-    
-    // Show loading state
-    const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>送信中...';
-    submitBtn.disabled = true;
-    
-    // Simulate form submission (replace with actual submission logic)
-    setTimeout(() => {
-        showNotification('メッセージを送信いたしました。ありがとうございます！', 'success');
-        form.reset();
-        
-        // Reset button
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-    }, 2000);
-}
-
-function validateInput(input) {
-    const value = input.value.trim();
-    const type = input.type;
-    let isValid = true;
-    
-    // Basic validation
-    if (type === 'email') {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        isValid = emailRegex.test(value);
-    } else if (input.hasAttribute('required')) {
-        isValid = value.length > 0;
-    }
-    
-    // Visual feedback
-    if (isValid) {
-        input.style.borderColor = '#10b981';
-    } else {
-        input.style.borderColor = '#ef4444';
-    }
-    
-    return isValid;
-}
-
-// Notification system
-function showNotification(message, type = 'info') {
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: ${type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#3b82f6'};
-        color: white;
-        padding: 1rem 1.5rem;
-        border-radius: 0.5rem;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        z-index: 1000;
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
-        max-width: 300px;
-        word-wrap: break-word;
-    `;
-    
-    notification.innerHTML = `
-        <div class="flex items-center">
-            <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'} mr-2"></i>
-            <span>${message}</span>
-        </div>
-    `;
-    
-    document.body.appendChild(notification);
-    
-    // Animate in
-    setTimeout(() => {
-        notification.style.transform = 'translateX(0)';
-    }, 100);
-    
-    // Auto remove after 5 seconds
-    setTimeout(() => {
-        notification.style.transform = 'translateX(100%)';
-        setTimeout(() => {
-            if (notification.parentNode) {
-                notification.parentNode.removeChild(notification);
-            }
-        }, 300);
-    }, 5000);
-}
+document.getElementById("downloadBtn").addEventListener("click", function () {
+    const link = document.createElement("a");
+    link.href = "assets/rirekisho.xlsx"; 
+    link.download = "履歴書.xlsx";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  });
 
 // Utility functions
 function debounce(func, wait) {
